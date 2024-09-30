@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('note')->nullable();
             $table->string('prefix');
-            $table->foreignId('bank_id')->constrained('banks');
+            $table->foreignId('bank_id')->constrained('bank');
             $table->timestamps();
         });
     }
