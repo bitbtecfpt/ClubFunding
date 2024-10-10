@@ -13,14 +13,22 @@
                     <div class="fs-6 pb-2 mt-3" style="font-size: 12px">
                         <span>Số tiền: <strong>{{ $purpose->amount_formatted }}<span
                                     class="text-secondary"></span></strong></span> <br>
-                        <span>Ngân hàng: {{ $purpose->bankFullname }} ({{ $purpose->bankName }})</span> <br>
-                        <span>Chủ tài khoản: {{ $purpose->bankAccount }}</span>
+                        <span>Ngân hàng: {{ $purpose->bankName }} ({{ $purpose->bankAccount }})</span> <br>
+                        <span>
+                            Chủ tài khoản: {{ $purpose->bankFullname }}
+                        </span> <br>
                         <span>
                             {{ $purpose->transactionDescription }}
                         </span> <br>
                         <span>
                             {{ $purpose->transactionDescriptionDecoded}}
-                        </span>
+                        </span> <br>
+                        <span>
+                            Người chuyển tiền: {{ $purpose->visitorName}}
+                        </span> <br>
+                        <span>
+                            Số điện thoại: {{ $purpose->visitorPhone}}
+                        </span> <br>
                     </div>
                     <div class="fs-6 pb-2 mt-3" style="font-size: 12px">
                         <button class="btn btn-warning w-100 d-none" id="btn-check-payment">

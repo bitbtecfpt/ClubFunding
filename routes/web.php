@@ -9,5 +9,5 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/pay/{purposeCode}/{phone}', [PaymentController::class, 'displayPaymentForm'])->name('pay');
+Route::get('/pay/{purposeCode}/{phone}/{name}', [PaymentController::class, 'displayPaymentForm'])->name('pay');
 
