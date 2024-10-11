@@ -133,5 +133,4 @@ class PaymentController extends Controller
         $encrypted = substr($data, 16);
         return openssl_decrypt($encrypted, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
     }
-
 }
