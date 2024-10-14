@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purposes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('code');
-            $table->string('note');
-            $table->string('prefix');
-            $table->foreignId('bank_id')->constrained('banks');
-            $table->timestamps();
+        Schema::create('Purposes', function (Blueprint $table) {
+            $table->id();  // Tạo cột id (tự tăng)
+            $table->string('name');  // Tạo cột name
+            $table->string('code')->unique();  // Tạo cột code
+            $table->text('note')->nullable();  // Tạo cột note
+            $table->string('prefix')->nullable();  // Tạo cột prefix
+            $table->unsignedBigInteger('bank_id');  // Tạo cột bank_id (khóa ngoại)
+            $table->timestamps();  // Tạo cột created_at và updated_at
+
+            // Thiết lập khóa ngoại cho cột bank_id
+            $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purposes');
+        Schema::dropIfExists('Purposes');
     }
 };

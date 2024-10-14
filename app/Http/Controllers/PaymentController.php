@@ -51,8 +51,11 @@ class PaymentController extends Controller
             $_purpose = Purpose::where('code', $purposeCode)
                         ->with('bank')
                         ->first();
+            error_log($_purpose);
             $visitor = Visitor::where('phone', $phone)->first();
+            error_log($visitor);
             $requiredFee = RequiredFee::where('purpose_code', $_purpose->code)->orderBy('id', 'DESC')->first();
+            error_log($requiredFee);
             if ($_purpose && $visitor && $requiredFee && $requiredFee->amount > 0) {
                 $prefixDescription = $_purpose->prefix;
                 $visitorName = $visitor->name;
