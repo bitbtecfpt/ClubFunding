@@ -9,7 +9,18 @@ class Purpose extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'code', 'note', 'prefix', 'bank_id', 'created_at', 'updated_at'];
+    protected $table = 'Purposes';
+
+    protected $fillable = [
+        'id',
+        'name', 
+        'code', 
+        'note', 
+        'prefix', 
+        'bank_id', 
+        'created_at', 
+        'updated_at'
+    ];
 
     public function bank()
     {

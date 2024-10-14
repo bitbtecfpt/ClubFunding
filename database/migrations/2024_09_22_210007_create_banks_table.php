@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banks', function (Blueprint $table) {
-            $table->id();
-            $table->string('bank_account');
-            $table->string('bank_name');
-            $table->string('bank_fullname');
-            $table->string('bank_username');
-            $table->timestamps();
+        Schema::create('Banks', function (Blueprint $table) {
+            $table->id();  // Tạo cột id (tự tăng)
+            $table->string('bank_account');  // Tạo cột bank_account
+            $table->string('bank_name');  // Tạo cột bank_name 
+            $table->string('bank_fullname');  // Tạo cột bank_fullname
+            $table->string('bank_username');  // Tạo cột bank_username 
+            $table->timestamps();  // Tạo cột created_at và updated_at
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banks');
+        Schema::dropIfExists('Banks');
     }
 };

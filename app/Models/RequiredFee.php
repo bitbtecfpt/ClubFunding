@@ -9,11 +9,18 @@ class RequiredFee extends Model
 {
     use HasFactory;
 
+    protected $table = 'RequiredFees';
+
     protected $fillable = [
         'id',
         'amount',
-        'bank_id',
+        'purpose_code',
         'created_at',
         'updated_at',
     ];
+
+    public function purpose()
+    {
+        return $this->belongsTo(Purpose::class, 'purpose_code', 'code');
+    }
 }

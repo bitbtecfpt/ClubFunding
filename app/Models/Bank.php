@@ -9,6 +9,8 @@ class Bank extends Model
 {
     use HasFactory;
 
+    protected $table = 'Banks';
+
     protected $fillable = [
         'id',
         'bank_account',
