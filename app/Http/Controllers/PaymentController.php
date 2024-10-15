@@ -45,14 +45,17 @@ class PaymentController extends Controller
         }
     }
 
-    public function displayPaymentForm($purposeCode, $phone)
+    public function displayPaymentForm($purposeCode, $phone, $name)
     {
         try {
             $_purpose = Purpose::where('code', $purposeCode)
                         ->with('bank')
                         ->first();
             error_log($_purpose);
-            $visitor = Visitor::where('phone', $phone)->first();
+            $visitor = Visitor::firstOrCreate(
+                ['phone' => $phone],  // Điều kiện tìm kiếm
+                ['name' => $name]     // Nếu không tồn tại, tạo mới với tên
+            );
             error_log($visitor);
             $requiredFee = RequiredFee::where('purpose_code', $_purpose->code)->orderBy('id', 'DESC')->first();
             error_log($requiredFee);
@@ -130,5 +133,4 @@ class PaymentController extends Controller
         $encrypted = substr($data, 16);
         return openssl_decrypt($encrypted, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
     }
-
 }

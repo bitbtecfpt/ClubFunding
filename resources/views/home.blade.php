@@ -112,10 +112,16 @@
 
         function openPaymentPage() {
             // stop process action
-            let purpose_code = document.getElementById('purpose').value;
             let phone = document.getElementById('phone').value;
-            let url = `/pay/${purpose_code}/${phone}`;
-            window.open(url, '_blank').focus();
+            let name = document.getElementById('name').value;
+            let purpose_code = document.getElementById('purpose').value;
+
+            if (purpose_code == 0) {
+                alert('Vui lòng chọn mục đích thanh toán');
+            } else {
+                let url = `/pay/${purpose_code}/${phone}/${name}`;
+                window.open(url, '_blank').focus();
+            }
         }
     </script>
 @endsection
