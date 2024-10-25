@@ -63,7 +63,7 @@
 
         <footer class=" mt-auto py-3 bg-light bg-info text-center text-lg-start fixed-bottom">
             <div class="container">
-                <span class="text-muted">© 2024 omiCode Education by Hà Ngọc Linh</span>
+                <span class="text-muted">© 2024 by D&T</span>
             </div>
         </footer>
     </div>

@@ -17,9 +17,9 @@
                         <span>
                             Chủ tài khoản: {{ $purpose->bankFullname }}
                         </span> <br>
-                        <span>
+                        {{-- <span>
                             {{ $purpose->transactionDescription }}
-                        </span> <br>
+                        </span> <br> --}}
                         <span>
                             {{ $purpose->transactionDescriptionDecoded}}
                         </span> <br>
