@@ -15,8 +15,10 @@ jobs:
         working-directory: /www/wwwroot/funding.btecit.tech
     steps:
     - uses: actions/checkout@v4
-    - name: Install Dependencies
+    - name: Install Dependencies composer
       run: /www/server/php/83/bin/php /usr/bin/composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Install Dependencies npm
+      run: npm install
     - name: Generate key
       run: /www/server/php/83/bin/php artisan key:generate
     - name: Clean cache
