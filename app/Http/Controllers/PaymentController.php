@@ -72,8 +72,8 @@ class PaymentController extends Controller
                 $amount = $requiredFee->amount;
                 $timestamp = Carbon::now()->timestamp;
                 $string = "$visitorPhone-$timestamp";
-                $crypto = "abc";//Crypt::encryptString($string);
-                $decoded = "abc"; //Crypt::decryptString($crypto);
+                $crypto = $_purpose->note;//Crypt::encryptString($string);
+                $decoded = $_purpose->note; //Crypt::decryptString($crypto);
 
                 $moneyDescription = "$prefixDescription-$visitorName-$visitorPhone-$timestamp";
                 $fmt = numfmt_create( 'vi_VN', NumberFormatter::CURRENCY);
