@@ -107,6 +107,8 @@ class PaymentController extends Controller
         // Lấy dữ liệu từ webhook
         $data = $request->json()->all();
 
+        error_log($data);
+
         if (empty($data)) {
             return response()->json(['success' => false, 'message' => 'No data'], 400);
         }
