@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Purpose;
 use App\Models\RequiredFee;
 use App\Models\Visitor;
+use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -98,6 +99,43 @@ class PaymentController extends Controller
         } catch (\Throwable $th) {
             dd($th->getLine() . ' - ' . $th->getMessage());
             return view('pay', ['purpose' => null]);
+        }
+    }
+
+    public function storeTransaction(Request $request)
+    {
+        // Lấy dữ liệu từ webhook
+        $data = $request->json()->all();
+
+        error_log($data);
+
+        if (empty($data)) {
+            return response()->json(['success' => false, 'message' => 'No data'], 400);
+        }
+
+        // Kiểm tra loại giao dịch
+        $amount_in = $data['transferType'] === 'in' ? $data['transferAmount'] : 0;
+        $amount_out = $data['transferType'] === 'out' ? $data['transferAmount'] : 0;
+
+        try {
+            // Tạo một bản ghi trong bảng tb_transactions
+            Transaction::create([
+                'gateway' => $data['gateway'] ?? null,
+                'transaction_date' => $data['transactionDate'] ?? now(),
+                'account_number' => $data['accountNumber'] ?? null,
+                'sub_account' => $data['subAccount'] ?? null,
+                'amount_in' => $amount_in,
+                'amount_out' => $amount_out,
+                'accumulated' => $data['accumulated'] ?? 0,
+                'code' => $data['code'] ?? null,
+                'transaction_content' => $data['content'] ?? null,
+                'reference_number' => $data['referenceCode'] ?? null,
+                'body' => $data['description'] ?? null,
+            ]);
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to insert record: ' . $e->getMessage()], 500);
         }
     }
 

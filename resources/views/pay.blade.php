@@ -15,7 +15,7 @@
                                     class="text-secondary"></span></strong></span> <br>
                         <span>Ngân hàng: {{ $purpose->bankName }} ({{ $purpose->bankAccount }})</span> <br>
                         <span>
-                            Chủ tài khoản: {{ $purpose->bankFullname }}
+                            Chủ tài khoản: {{ $purpose->bankUsername }}
                         </span> <br>
                         {{-- <span>
                             {{ $purpose->transactionDescription }}
