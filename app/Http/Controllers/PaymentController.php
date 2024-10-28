@@ -73,8 +73,8 @@ class PaymentController extends Controller
                 $amount = $requiredFee->amount;
                 $timestamp = Carbon::now()->timestamp;
                 $string = "$visitorPhone-$timestamp";
-                $crypto = $_purpose->note;//Crypt::encryptString($string);
-                $decoded = $_purpose->note; //Crypt::decryptString($crypto);
+                $crypto = //Crypt::encryptString($string);
+                $decoded = //Crypt::decryptString($crypto);
 
                 $moneyDescription = "$prefixDescription-$visitorName-$visitorPhone-$timestamp";
                 $fmt = numfmt_create( 'vi_VN', NumberFormatter::CURRENCY);
@@ -107,18 +107,17 @@ class PaymentController extends Controller
         // Lấy dữ liệu từ webhook
         $data = $request->json()->all();
 
-        error_log($data);
-
         if (empty($data)) {
             return response()->json(['success' => false, 'message' => 'No data'], 400);
         }
 
         // Kiểm tra loại giao dịch
         $amount_in = $data['transferType'] === 'in' ? $data['transferAmount'] : 0;
+    
         $amount_out = $data['transferType'] === 'out' ? $data['transferAmount'] : 0;
 
         try {
-            // Tạo một bản ghi trong bảng tb_transactions
+            // Tạo một bản ghi trong bảng Transactions
             Transaction::create([
                 'gateway' => $data['gateway'] ?? null,
                 'transaction_date' => $data['transactionDate'] ?? now(),
