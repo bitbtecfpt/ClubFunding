@@ -8,12 +8,13 @@
     <title>{{ config('app.name', 'omiCode Payment Gate') }}</title>
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<div id="app">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm"> <!-- Đổi bg-white thành bg-dark -->
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'omiCode Payment Gate') }}
@@ -61,9 +62,9 @@
             @yield('content')
         </main>
 
-        <footer class=" mt-auto py-3 bg-light bg-info text-center text-lg-start fixed-bottom">
+        <footer class=" mt-auto py-3 bg-dark bg-info text-center text-lg-start fixed-bottom">
             <div class="container">
-                <span class="text-muted">© 2024 by D&T</span>
+                <span class="text-light">© 2024 by D&T</span>
             </div>
         </footer>
     </div>

@@ -9,3 +9,55 @@
 
 // Bootstrap Icons
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+
+// styles.scss
+
+$green: #28a745;
+$green-dark: #218838;
+
+body {
+    background-image: url('../images/slide2.jpg'); /* Đường dẫn tới hình nền rừng cây */
+    background-size: cover; /* Phủ kín toàn bộ */
+    background-repeat: no-repeat; /* Không lặp lại ảnh */
+    background-position: center; /* Căn giữa ảnh */
+    height: 100vh; /* Chiều cao của body */
+    color: #fff; /* Màu chữ mặc định */
+}
+
+.green-header {
+    background-color: rgba(0, 128, 0, 0.8);
+}
+
+.text-green {
+    color: $green;
+}
+
+.btn-green {
+    background-color: $green;
+    color: white;
+
+    &:hover {
+        background-color: $green-dark;
+    }
+}
+
+.card-header {
+    background-color: rgba(0, 128, 0, 0.6);
+    color: white;
+}
+
+label.text-green {
+    font-weight: bold;
+    color: $green;
+}
+
+/* Thay đổi màu sắc cho navbar */
+.navbar {
+    background-color: #003300; /* Màu xanh đậm */
+}
+
+/* Thay đổi màu sắc cho footer */
+footer {
+    background-color: #003300; /* Màu xanh đậm */
+    color: #ffffff; /* Màu chữ trắng */
+}
