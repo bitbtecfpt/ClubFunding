@@ -46,6 +46,118 @@ body {
     color: white;
 }
 
+$transparent-background: rgba(0, 0, 0, 0.5);
+
+.card {
+    background-color: $transparent-background;
+    border: none;
+    color: #fff;
+}
+$transparent-white: rgba(255, 255, 255, 0.900);
+$placeholder-green: rgba($green, 0.7);
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    background-color: $transparent-white;
+    border: 1px solid $green;
+    padding: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    &::placeholder {
+        color: $placeholder-green;
+    }
+
+    &:focus {
+        background-color: $transparent-white;
+        border-color: $green-dark;
+        outline: none;
+    }
+
+    &:disabled {
+        background-color: rgba(168, 168, 168, 0.76);
+        border-color: rgba($green, 0.6);
+    }
+}
+// Cấu hình màu xanh lá và hiệu ứng nền trong suốt
+$green: #28a745;
+$green-dark: #218838;
+
+// Checkbox styling
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid $green;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+
+    /* Hiệu ứng khi hover */
+    &:hover {
+        background-color: rgba($green, 0.1);
+        border-color: $green-dark;
+    }
+
+    /* Khi checkbox được chọn */
+    &:checked {
+        background-color: $green;
+        border-color: $green;
+        &::after {
+            content: '\2713'; /* Tích xanh */
+            color: white;
+            font-size: 0.9em;
+            position: absolute;
+            top: 0;
+            left: 3px;
+        }
+    }
+
+    /* Khi checkbox bị disable */
+    &:disabled {
+        background-color: rgba($green, 0.1);
+        border-color: rgba($green, 0.5);
+        cursor: not-allowed;
+        & + label {
+            color: rgba($green, 0.6);
+        }
+    }
+}
+
+input[type="checkbox"] + label {
+    color: $green;
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $green-dark;
+    }
+
+    /* Trạng thái khi checkbox được chọn */
+    input[type="checkbox"]:checked + & {
+        color: $green-dark;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Các tùy chọn bên trong select với theme trong suốt */
+select option {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $green;
+
+    &:disabled {
+        color: rgba($green, 0.6);
+        background-color: rgba($green, 0.1);
+    }
+}
+
 label.text-green {
     font-weight: bold;
     color: $green;
