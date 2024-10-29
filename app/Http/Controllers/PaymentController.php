@@ -104,19 +104,19 @@ class PaymentController extends Controller
 
     public function storeTransaction(Request $request)
     {
-        // Lấy dữ liệu từ webhook
-        $data = $request->json()->all();
-
-        if (empty($data)) {
-            return response()->json(['success' => false, 'message' => 'No data'], 400);
-        }
-
-        // Kiểm tra loại giao dịch
-        $amount_in = $data['transferType'] === 'in' ? $data['transferAmount'] : 0;
-    
-        $amount_out = $data['transferType'] === 'out' ? $data['transferAmount'] : 0;
-
         try {
+            // Lấy dữ liệu từ webhook
+            $data = $request->json()->all();
+
+            if (empty($data)) {
+                return response()->json(['success' => false, 'message' => 'No data'], 400);
+            }
+
+            // Kiểm tra loại giao dịch
+            $amount_in = $data['transferType'] === 'in' ? $data['transferAmount'] : 0;
+    
+            $amount_out = $data['transferType'] === 'out' ? $data['transferAmount'] : 0;
+
             // Tạo một bản ghi trong bảng Transactions
             Transaction::create([
                 'gateway' => $data['gateway'] ?? null,
