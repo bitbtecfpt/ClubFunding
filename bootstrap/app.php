@@ -12,9 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->validateCsrfTokens(except: [
-            '/receive_transaction',
-        ]);
+        
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
