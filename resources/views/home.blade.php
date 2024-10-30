@@ -4,7 +4,7 @@
     <!-- Main Header -->
     <header class="green-header text-center py-5" style="margin-top: -25px;">
         <div class="container">
-            <h1 class="display-4 text-white">Club Funding</h1>
+            <h1 class="display-4 text-white">Funding</h1>
             <p class="text-white">Cùng chung tay vì một hành tinh xanh hơn</p>
         </div>        
     </header>

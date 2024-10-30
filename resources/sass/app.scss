@@ -3,29 +3,47 @@
 
 // Variables
 @import 'variables';
-
-// Bootstrap
 @import 'bootstrap/scss/bootstrap';
-
-// Bootstrap Icons
 @import 'bootstrap-icons/font/bootstrap-icons.css';
-
-// styles.scss
 
 $green: #28a745;
 $green-dark: #218838;
 
 body {
-    background-image: url('../images/slide2.jpg'); /* Đường dẫn tới hình nền rừng cây */
-    background-size: cover; /* Phủ kín toàn bộ */
-    background-repeat: no-repeat; /* Không lặp lại ảnh */
-    background-position: center; /* Căn giữa ảnh */
-    height: 100vh; /* Chiều cao của body */
-    color: #fff; /* Màu chữ mặc định */
+    background-image: url('../images/slide2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    color: #fff;
+
+    // Animation Fade-in khi tải trang
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .green-header {
     background-color: rgba(0, 128, 0, 0.8);
+    animation: slideDown 1s ease-out; /* Slide xuống nhẹ cho Header */
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .text-green {
@@ -35,44 +53,51 @@ body {
 .btn-green {
     background-color: $green;
     color: white;
+    transition: background-color 0.3s, transform 0.2s ease;
 
     &:hover {
         background-color: $green-dark;
+        transform: scale(1.05); // Phóng to nhẹ khi hover
     }
 }
 
-.card-header {
-    background-color: rgba(0, 128, 0, 0.6);
-    color: white;
-}
-
-$transparent-background: rgba(0, 0, 0, 0.5);
-
+// Animation Card fade-in with slight slide
 .card {
-    background-color: $transparent-background;
-    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: $green-dark;
     color: #fff;
+    animation: fadeInUp 0.8s ease-in-out; /* Card slide lên khi xuất hiện */
 }
-$transparent-white: rgba(255, 255, 255, 0.900);
-$placeholder-green: rgba($green, 0.7);
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 input[type="text"],
 input[type="number"],
 select,
 textarea {
-    background-color: $transparent-white;
+    background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid $green;
     padding: 10px;
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: all 0.3s ease;
 
     &::placeholder {
-        color: $placeholder-green;
+        color: rgba($green, 0.7);
     }
 
     &:focus {
-        background-color: $transparent-white;
+        background-color: rgba(255, 255, 255, 0.95);
         border-color: $green-dark;
         outline: none;
+        transform: scale(1.02); /* Scale nhẹ khi focus */
     }
 
     &:disabled {
@@ -80,11 +105,7 @@ textarea {
         border-color: rgba($green, 0.6);
     }
 }
-// Cấu hình màu xanh lá và hiệu ứng nền trong suốt
-$green: #28a745;
-$green-dark: #218838;
 
-// Checkbox styling
 input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -98,34 +119,35 @@ input[type="checkbox"] {
     transition: all 0.3s ease;
     border-radius: 3px;
 
-    /* Hiệu ứng khi hover */
     &:hover {
         background-color: rgba($green, 0.1);
         border-color: $green-dark;
     }
 
-    /* Khi checkbox được chọn */
     &:checked {
         background-color: $green;
         border-color: $green;
         &::after {
-            content: '\2713'; /* Tích xanh */
+            content: '\2713';
             color: white;
             font-size: 0.9em;
             position: absolute;
             top: 0;
             left: 3px;
+            animation: checkmark 0.3s ease-in-out;
         }
     }
+}
 
-    /* Khi checkbox bị disable */
-    &:disabled {
-        background-color: rgba($green, 0.1);
-        border-color: rgba($green, 0.5);
-        cursor: not-allowed;
-        & + label {
-            color: rgba($green, 0.6);
-        }
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
@@ -140,14 +162,12 @@ input[type="checkbox"] + label {
         color: $green-dark;
     }
 
-    /* Trạng thái khi checkbox được chọn */
     input[type="checkbox"]:checked + & {
         color: $green-dark;
         background-color: rgba(255, 255, 255, 0.1);
     }
 }
 
-/* Các tùy chọn bên trong select với theme trong suốt */
 select option {
     background-color: rgba(255, 255, 255, 0.1);
     color: $green;
@@ -163,13 +183,62 @@ label.text-green {
     color: $green;
 }
 
-/* Thay đổi màu sắc cho navbar */
-.navbar {
-    background-color: #003300; /* Màu xanh đậm */
+.navbar, footer {
+    background-color: #003300;
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Thay đổi màu sắc cho footer */
-footer {
-    background-color: #003300; /* Màu xanh đậm */
-    color: #ffffff; /* Màu chữ trắng */
+// Styles for Phone Contact Section
+.phone-contact {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: $green-dark;
+    border: 2px solid $green;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+    animation: fadeInPhone 1s ease, pulse 1.5s infinite 2s; // Pulse nhẹ
+
+    &:hover {
+        transform: scale(1.05);
+    }
+    
+    .phone-icon {
+        font-size: 1.5em;
+        color: $green;
+    }
+
+    .phone-number {
+        color: $green-dark;
+    }
+}
+
+// Animation Keyframes
+@keyframes fadeInPhone {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }

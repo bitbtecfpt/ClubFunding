@@ -15,10 +15,14 @@
 <body>
 <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm"> <!-- Đổi bg-white thành bg-dark -->
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'omiCode Payment Gate') }}
-                </a>
+            <div class="container">                
+                <div class="phone-contact">
+                    <i class="bi bi-telephone-fill phone-icon"></i>
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'omiCode Payment Gate') }}
+                    </a>
+                    <span class="phone-number">0985 563 214</span>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
