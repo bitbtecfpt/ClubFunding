@@ -8,16 +8,21 @@
     <title>{{ config('app.name', 'omiCode Payment Gate') }}</title>
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'omiCode Payment Gate') }}
-                </a>
+<div id="app">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm"> <!-- Đổi bg-white thành bg-dark -->
+            <div class="container">                
+                <div class="phone-contact">
+                    <i class="bi bi-telephone-fill phone-icon"></i>
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'omiCode Payment Gate') }}
+                    </a>
+                    <span class="phone-number">0985 563 214</span>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -61,9 +66,9 @@
             @yield('content')
         </main>
 
-        <footer class=" mt-auto py-3 bg-light bg-info text-center text-lg-start fixed-bottom">
+        <footer class=" mt-auto py-3 bg-dark bg-info text-center text-lg-start fixed-bottom">
             <div class="container">
-                <span class="text-muted">© 2024 by D&T</span>
+                <span class="text-light">© 2024 by D&T</span>
             </div>
         </footer>
     </div>
