@@ -156,6 +156,11 @@ class PaymentController extends Controller
         }
     }
 
+    public function allTransactions() {
+        $transactions = Transaction::all();
+        return view('transactionHistory', ['transactions' => $transactions]);
+    }
+
     function safe_b64encode($string) {
         $data = base64_encode($string);
         // Replace URL unsafe characters with URL safe characters

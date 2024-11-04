@@ -33,6 +33,9 @@
                         <button class="btn btn-warning w-100 d-none" id="btn-check-payment">
                             Kiểm tra thanh toán
                         </button>
+                        <button class="btn btn-warning w-100" id="btn-all-transactions">
+                            Kiểm tra toàn bộ giao dịch
+                        </button>
                     </div>
                 </div>
             </div>
@@ -43,7 +46,7 @@
         // countdown 40 seconds then shơw the button
         setTimeout(() => {
             document.getElementById('btn-check-payment').classList.remove('d-none');
-        }, 1000);
+        }, 20000);
 
         document.getElementById('btn-check-payment').addEventListener('click', function() {
             const transactionDescription = `{{ $purpose->transactionDescriptionDecoded }}`;
@@ -60,6 +63,10 @@
                         alert('Đã xảy ra lỗi kết nối. Vui lòng thử lại.');
                     }
                 });
+        });
+
+        document.getElementById('btn-all-transactions').addEventListener('click', function() {
+            window.location.href = '/transaction-history';
         });
     </script>
 @endsection
