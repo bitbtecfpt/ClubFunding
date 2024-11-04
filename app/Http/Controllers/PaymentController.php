@@ -73,8 +73,10 @@ class PaymentController extends Controller
                 $amount = $requiredFee->amount;
                 $timestamp = Carbon::now()->timestamp;
                 $string = "$visitorPhone-$timestamp";
-                $crypto = //Crypt::encryptString($string);
-                $decoded = //Crypt::decryptString($crypto);
+                $crypto = Crypt::encryptString($string);
+                error_log($crypto);
+                $decoded = Crypt::decryptString($crypto);
+                error_log($decoded);
 
                 $moneyDescription = "$prefixDescription-$visitorName-$visitorPhone-$timestamp";
                 $fmt = numfmt_create( 'vi_VN', NumberFormatter::CURRENCY);
@@ -92,7 +94,7 @@ class PaymentController extends Controller
                     'amount' => $requiredFee->amount,
                     'amount_formatted' => numfmt_format_currency($fmt, $requiredFee->amount, 'VND'),
                     'note' => $_purpose->note,
-                    'qrcode' => "https://qr.sepay.vn/img?acc=$bankAccount&bank=$bankName&amount=$amount&des=$crypto&template=compact"
+                    'qrcode' => "https://qr.sepay.vn/img?acc=$bankAccount&bank=$bankName&amount=$amount&des=$decoded&template=compact"
                 ];
             }
             return view('pay', ['purpose' => $purpose]);
@@ -135,6 +137,22 @@ class PaymentController extends Controller
             return response()->json(['success' => true]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Failed to insert record: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function checkTransaction($transactionDescription)
+    {
+        try {
+            // Tìm giao dịch với mô tả
+            $transaction = Transaction::where('transaction_content', $transactionDescription)->first();
+
+            if ($transaction) {
+                return response()->json(['message' => 'Giao dịch thành công'], 200);
+            } else {
+                return response()->json(['message' => 'Chưa tìm thấy giao dịch'], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Lỗi: ' . $e->getMessage()], 500);
         }
     }
 
