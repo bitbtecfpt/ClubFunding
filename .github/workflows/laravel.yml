@@ -15,17 +15,19 @@ jobs:
         working-directory: /www/wwwroot/funding.btecit.tech
     steps:
     - uses: actions/checkout@v4
+    - name: copy source
+      run: cp -r /home/club-funding/actions-runner/_work/ClubFunding/ClubFunding/* /www/wwwroot/funding.btecit.tech/
     - name: Install Dependencies composer
-      run: /www/server/php/83/bin/php /usr/bin/composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/83/bin/php /usr/bin/composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Install Dependencies npm
-      run: npm install
+      run: cd /www/wwwroot/funding.btecit.tech/ && npm install
     - name: Generate key
-      run: /www/server/php/83/bin/php artisan key:generate
+      run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/83/bin/php artisan key:generate
     - name: Clean cache
-      run: /www/server/php/83/bin/php artisan optimize:clear
+      run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/83/bin/php artisan optimize:clear
     - name: Directory Permissions Bootstrap
-      run: chmod -R 777 storage bootstrap/cache
+      run: cd /www/wwwroot/funding.btecit.tech/ && chmod -R 777 storage bootstrap/cache
     - name: Directory Permissions
-      run: chmod -R 777 storage public
+      run: cd /www/wwwroot/funding.btecit.tech/ && chmod -R 777 storage public
     - name: Build frontend
-      run: npm run build
+      run: cd /www/wwwroot/funding.btecit.tech/ && npm run build
