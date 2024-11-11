@@ -71,7 +71,7 @@ class PaymentController extends Controller
                 $bankAccount = $_purpose->bank->bank_account;
                 $bankName = $_purpose->bank->bank_name;
                 $amount = $requiredFee->amount;
-                $timestamp = Carbon::now()->timestamps();
+                $timestamp = Carbon::now()->timestamp;
                 $string = "$visitorPhone-$timestamp";
                 $crypto = Crypt::encryptString($string);
                 error_log($crypto);
