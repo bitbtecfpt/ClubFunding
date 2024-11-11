@@ -9,7 +9,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['public/sass/app.scss', 'public/js/app.js'])
 </head>
 
 <body>
