@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: copy source
-      run: cp -r /home/club-funding/actions-runner/_work/ClubFunding/ClubFunding/* /www/wwwroot/funding.btecit.tech/
+      run: cp -r /home/clubfunding/actions-runner/_work/ClubFunding/ClubFunding/* /www/wwwroot/funding.btecit.tech/
     - name: Install Dependencies composer
       run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/83/bin/php /usr/bin/composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Install Dependencies npm
