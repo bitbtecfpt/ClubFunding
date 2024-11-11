@@ -44,9 +44,9 @@
 
     <script>
         // countdown 40 seconds then shơw the button
-        setTimeout(() => {
-            document.getElementById('btn-check-payment').classList.remove('d-none');
-        }, 20000);
+        // setTimeout(() => {
+        //     document.getElementById('btn-check-payment').classList.remove('d-none');
+        // }, 20000);
 
         document.getElementById('btn-check-payment').addEventListener('click', function() {
             const transactionDescription = `{{ $purpose->transactionDescriptionDecoded }}`;
