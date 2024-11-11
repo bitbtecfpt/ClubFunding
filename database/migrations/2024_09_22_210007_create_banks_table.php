@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Banks', function (Blueprint $table) {
+        Schema::create('banks', function (Blueprint $table) {
             $table->id();  // Tạo cột id (tự tăng)
             $table->string('bank_account');  // Tạo cột bank_account
             $table->string('bank_name');  // Tạo cột bank_name 

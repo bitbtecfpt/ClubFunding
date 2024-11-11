@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Purposes', function (Blueprint $table) {
+        Schema::create('purposes', function (Blueprint $table) {
             $table->id();  // Tạo cột id (tự tăng)
             $table->string('name');  // Tạo cột name
             $table->string('code')->unique();  // Tạo cột code
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Purposes');
+        Schema::dropIfExists('purposes');
     }
 };

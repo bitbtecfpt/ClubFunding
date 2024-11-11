@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('RequiredFees', function (Blueprint $table) {
+        Schema::create('requiredfees', function (Blueprint $table) {
             $table->id();  // Tạo cột id (tự tăng)
             $table->decimal('amount', 15, 2);  // Tạo cột amount (số thập phân)
             $table->string('purpose_code');  // Tạo cột purpose_code (chuỗi)
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('RequiredFees');
+        Schema::dropIfExists('requiredfees');
     }
 };

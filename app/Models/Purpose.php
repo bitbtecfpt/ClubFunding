@@ -9,7 +9,7 @@ class Purpose extends Model
 {
     use HasFactory;
 
-    protected $table = 'Purposes';
+    protected $table = 'purposes';
 
     protected $fillable = [
         'id',

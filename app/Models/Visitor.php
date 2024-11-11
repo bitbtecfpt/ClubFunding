@@ -15,7 +15,7 @@ class Visitor extends Model
      * @var array<int, string>
      */
 
-    protected $table = 'Visitors';
+    protected $table = 'visitors';
 
     protected $fillable = [
         'id',

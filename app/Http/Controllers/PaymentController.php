@@ -71,7 +71,7 @@ class PaymentController extends Controller
                 $bankAccount = $_purpose->bank->bank_account;
                 $bankName = $_purpose->bank->bank_name;
                 $amount = $requiredFee->amount;
-                $timestamp = Carbon::now()->timestamp;
+                $timestamp = Carbon::now()->timestamps();
                 $string = "$visitorPhone-$timestamp";
                 $crypto = Crypt::encryptString($string);
                 error_log($crypto);
@@ -94,7 +94,7 @@ class PaymentController extends Controller
                     'amount' => $requiredFee->amount,
                     'amount_formatted' => numfmt_format_currency($fmt, $requiredFee->amount, 'VND'),
                     'note' => $_purpose->note,
-                    'qrcode' => "https://qr.sepay.vn/img?acc=$bankAccount&bank=$bankName&amount=$amount&des=$decoded&template=compact"
+                    'qrcode' => "https://qr.sepay.vn/img?acc=$bankAccount&bank=$bankName&amount=$amount&des=$string&template=compact"
                 ];
             }
             return view('pay', ['purpose' => $purpose]);
