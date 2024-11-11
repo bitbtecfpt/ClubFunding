@@ -22,9 +22,9 @@ jobs:
     - name: Install Dependencies npm
       run: cd /www/wwwroot/funding.btecit.tech/ && npm install
     - name: Generate key
-      run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/83/bin/php artisan key:generate
+      run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/82/bin/php artisan key:generate
     - name: Clean cache
-      run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/83/bin/php artisan optimize:clear
+      run: cd /www/wwwroot/funding.btecit.tech/ && /www/server/php/82/bin/php artisan optimize:clear
     - name: Directory Permissions Bootstrap
       run: cd /www/wwwroot/funding.btecit.tech/ && chmod -R 777 storage bootstrap/cache
     - name: Directory Permissions
